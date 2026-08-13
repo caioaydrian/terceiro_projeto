@@ -1,0 +1,66 @@
+sistema de cafeteria:
+
+CRUD 1: Produtos & Cardápio
+
+Campos: id, nome, categoria_id, preco_unitario, estoque_qtd, tipo (Ex: Bebida Quente, Bebida Gelada, Doce, Salgado, Vegano/Sem Lactose).
+
+Regra de Exclusão: Não é possível excluir um produto que já esteja associado a alguma comanda/pedido no histórico.
+
+Mensagem do Sistema: "Não foi possível excluir o produto 'Espresso Duplo' pois ele consta em 14 comandas cadastradas. Caso deseje, altere o status para 'Inativo'."
+
+************CRUD 2: Clientes & Programa de Fidelidade
+
+Campos: id, nome, cpf, email, pontos_fidelidade, status (Ativo/Inativo).
+
+Regra de Exclusão: Cliente com comandas em aberto ou histórico financeiro não pode ser apagado do banco (integridade referencial).
+
+Mensagem do Sistema: "O cliente 'Carlos Silva' possui comandas ativas ou histórico de compras. A exclusão foi bloqueada para manter a integridade dos dados."
+
+CRUD 3: Comandas / Pedidos (O coração do sistema)
+
+Campos: id, cliente_id, numero_mesa, data_abertura, status (Aberta, Paga, Cancelada), valor_total.
+
+Regra de Exclusão/Cancelamento: Apenas comandas com status "Aberta" podem ser canceladas. Comandas já pagas não podem ser excluídas.
+
+Mensagem do Sistema: "Comandas já finalizadas e pagas não podem ser excluídas do histórico financeiro."
+
+------------------------------------------
+
+4. Front-End: Layout Bootstrap e UX
+Layout e Componentes Bootstrap (Mínimo 3):
+Navbar Superior: Logotipo da Coffee & Co., atalhos diretos para Dashboard, Cardápio, Clientes e Comandas.
+
+Cards de KPIs: Exibem os indicadores agregados do dia (Faturamento Total, Ticket Médio, Produto Campeão, Estoque Alerta).
+
+Modais Dinâmicos: Para criação/edição dos CRUDs sem recarregar a tela.
+
+Toast / Alerts: Para mensagens claras de erro, exclusão bloqueada ou sucesso.
+
+-----------------------------------
+
+Como esses conceitos se relacionam com o seu projeto:
+Cabeçalho / Lateral (Navbar Nível Superior):
+
+Tons escuros de café (espresso) para dar destaque à marca e botões limpos para trocar entre as abas do sistema (Dashboard, Produtos, Clientes, Comandas).
+
+Topo do Dashboard (Cards de Métricas / KPIs):
+
+Blocos destacados para os "grandes números" calculados no TypeScript via .reduce() (como Faturamento Total) e algoritmo de ranking (Produto Campeão).
+
+Área Principal (Tabela + Filtros):
+
+Campo de busca e seletores de categoria bem visíveis para acionar os filtros .filter() e as Stored Procedures do banco de dados.
+
+Tabela com fundo limpo e badges coloridas para destacar o status de cada pedido (Paga, Aberta, Cancelada).
+
+venda e pedido
+
+
+--------------------
+mer:
+produto: id, nome, id_categoria, valor
+tamanho: id, nome
+prod_tam(N:N): id_produto, id_tamanho
+categoria: id, nome
+venda: id, dataVenda
+item_venda: id_produto, id_venda

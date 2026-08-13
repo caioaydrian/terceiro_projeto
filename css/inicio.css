@@ -1,0 +1,167 @@
+.principio {
+    min-height: 100vh;
+}
+
+.comeco {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+    padding-top: 90px;
+    box-sizing: border-box;
+}
+
+.hero-container {
+    max-width: 960px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comeco h1 {
+    text-shadow: 2px 2px 4px #2C1600;
+    font-size: 74px;
+    font-weight: 400;
+    position: relative;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+.comeco p {
+    text-shadow: 2px 2px 4px #2C1600;
+    font-size: 24px;
+    color: white;
+}
+
+.comeco::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), #00000040 80%);
+    pointer-events: none;
+}
+
+.comeco img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.doiscomeco {
+    margin: 100px;
+}
+
+.doiscomeco h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.terceira {
+    background-color: #F9EFE4;
+}
+
+.trescomeco {
+    margin-bottom: 100px;
+    padding: 0;
+    gap: 2rem;
+}
+
+.titulo {
+    margin-top: 100px;
+    font-size: 15px;
+    margin-left: 300px;
+}
+
+.trescomeco .card {
+    flex: 1 1 0;
+    min-width: 220px;
+    margin: 0 10px;
+}
+
+.trescomeco .card-img-top {
+    height: 260px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.quatrocomeco {
+    margin-bottom: 10px;
+}
+
+.cincocomeco {
+    background-color: #422A26;
+    padding: 60px;
+}
+
+.cincoprimeiro {
+    text-align: center;
+    color: white;
+}
+
+.cincocomeco h5 {
+    font-size: 30px;
+}
+
+.horariocinco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 420px;
+    margin: 18px auto 0;
+    background-color: #745853;
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.horariocinco .wd,
+.horariocinco .we {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+.horariocinco .wd h6,
+.horariocinco .we h6 {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.horariocinco .wd p,
+.horariocinco .we p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* vertical divider */
+.horariocinco::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.25);
+    top: 6px;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
