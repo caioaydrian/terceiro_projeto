@@ -31,7 +31,7 @@
                 <li><a href="?paginas=historia">Our Story</a></li>
                 <li><a href="?paginas=contato">Contact</a></li>
 
-                <button class="button">Order Now</button>
+                <button class="button">Login</button>
             </ul>
         </nav>
     </header>

@@ -20,7 +20,7 @@
                 </div>
                 <div class="col">
                     <h2>House-Roasted Daily</h2>
-                    <p>Our vintage probat roaster spins daily in samll batches to highlight the unique terroir and delicate tasting notes of each bean.</p>
+                    <p>Our vintage probat roaster spins daily in small batches to highlight the unique terroir and delicate tasting notes of each bean.</p>
                 </div>
                 <div class="col">
                     <h2>Expertly Crafted</h2>
