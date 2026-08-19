@@ -45,9 +45,9 @@
                 </div>
             </div>
             <div class="card">
-                <img src="imagens/macchiato.jpeg" class="card-img-top" alt="macchiato">
+                <img src="imagens/latte.jpeg" class="card-img-top" alt="latte">
                 <div class="card-body">
-                    <h5 class="card-title">Caramel Macchiato</h5>
+                    <h5 class="card-title">Caramel Latte</h5>
                     <p class="card-text">Velvety steamed milk marked with espresso and finished with our house-made caramel.</p>
                     <p class="card-text"><small class="text-body-secondary">Sweet</small></p>
                 </div>
@@ -101,7 +101,7 @@
                     <p>8:00 AM - 5:00 PM</p>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary">Get Directions</button>
+            <button type="button" class="btn">Get Directions</button>
         </div>
     </section>
 </main>

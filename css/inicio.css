@@ -11,12 +11,12 @@
     align-items: center;
     gap: 20px;
     overflow: hidden;
-    padding-top: 90px;
+    padding-top: 60px;
     box-sizing: border-box;
 }
 
 .hero-container {
-    max-width: 960px;
+    max-width: 1200px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -24,8 +24,9 @@
 }
 
 .comeco h1 {
+    font-family: libre caslon text;
     text-shadow: 2px 2px 4px #2C1600;
-    font-size: 74px;
+    font-size: 90px;
     font-weight: 400;
     position: relative;
     margin: 0;
@@ -35,6 +36,7 @@
 }
 
 .comeco p {
+    /* font-family: linden hill; */
     text-shadow: 2px 2px 4px #2C1600;
     font-size: 24px;
     color: white;
@@ -102,7 +104,7 @@
 
 .cincocomeco {
     background-color: #422A26;
-    padding: 60px;
+    padding: 20px;
 }
 
 .cincoprimeiro {
@@ -111,7 +113,8 @@
 }
 
 .cincocomeco h5 {
-    font-size: 30px;
+    font-size: 44px;
+    margin-bottom: 40px;
 }
 
 .horariocinco {
@@ -124,7 +127,7 @@
     background-color: #745853;
     color: #fff;
     border-radius: 12px;
-    padding: 30px;
+    padding: 40px;
     position: relative;
     box-sizing: border-box;
 }
@@ -136,21 +139,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
+    padding: 12px 22px;
     text-align: center;
 }
 
 .horariocinco .wd h6,
 .horariocinco .we h6 {
     margin: 0 0 6px 0;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 28px;
+    /* font-weight: 600; */
 }
 
 .horariocinco .wd p,
 .horariocinco .we p {
     margin: 0;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 /* vertical divider */
@@ -164,4 +167,9 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 1px;
+}
+
+.btn {
+    background-color: #FFEDEA;
+    margin-top: 40px;
 }
