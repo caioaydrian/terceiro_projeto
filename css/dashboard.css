@@ -1,0 +1,119 @@
+body {
+    background: #f3eee8;
+    color: #2e211b;
+}
+
+.dashboard-page {
+    width: min(100% - 2.5rem, 72rem);
+    margin: 0 auto;
+    padding: 4rem 0 5rem;
+}
+
+.dashboard-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #d8c8ba;
+}
+
+.dashboard-heading h1 {
+    margin: 0.8rem 0 0.6rem;
+    color: #33231c;
+    font: 400 clamp(2rem, 5vw, 3.4rem)/1.05 'Libre Caslon Text', serif;
+}
+
+.dashboard-heading p {
+    margin: 0;
+    color: #6f5a4b;
+    font: 0.95rem/1.6 Montserrat, sans-serif;
+}
+
+.dashboard-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.7rem;
+}
+
+.dashboard-link {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    background: #8c5634;
+    color: #fffaf4;
+    font: 700 0.72rem Montserrat, sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.dashboard-link:hover {
+    background: #6f4026;
+    color: #fffaf4;
+}
+
+.dashboard-link-light {
+    border: 1px solid #b9895b;
+    background: transparent;
+    color: #6f4026;
+}
+
+.dashboard-link-light:hover {
+    background: #eadbcd;
+    color: #6f4026;
+}
+
+.dashboard-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding-top: 2rem;
+}
+
+.metric-card {
+    min-height: 9rem;
+    padding: 1.5rem;
+    border-top: 3px solid #b9895b;
+    background: #fffaf4;
+    box-shadow: 0 0.8rem 2rem rgba(63, 39, 25, 0.08);
+}
+
+.metric-card h3 {
+    margin: 0;
+    color: #765d4c;
+    font: 700 0.72rem/1.3 Montserrat, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.metric-card p {
+    margin: 1.2rem 0 0;
+    color: #33231c;
+    font: 400 clamp(1.6rem, 4vw, 2.3rem)/1.1 'Libre Caslon Text', serif;
+}
+
+@media (max-width: 700px) {
+    .dashboard-page {
+        width: min(100% - 2rem, 42rem);
+        padding-top: 2.5rem;
+    }
+
+    .dashboard-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .dashboard-actions,
+    .dashboard-link {
+        width: 100%;
+    }
+
+    .dashboard-link {
+        text-align: center;
+    }
+
+    .dashboard-metrics {
+        grid-template-columns: 1fr;
+    }
+}

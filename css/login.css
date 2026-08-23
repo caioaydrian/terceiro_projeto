@@ -1,0 +1,132 @@
+body {
+    background: #f4efe8;
+    color: #2e211b;
+}
+
+.login-page,
+.dashboard-page {
+    min-height: 72vh;
+    display: grid;
+    place-items: center;
+    padding: 4rem 1.25rem;
+}
+
+.login-panel {
+    width: min(100%, 58rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fffaf4;
+    box-shadow: 0 1.5rem 4rem rgba(63, 39, 25, 0.14);
+}
+
+.login-copy,
+.login-form {
+    padding: clamp(2rem, 6vw, 4.5rem);
+}
+
+.login-copy {
+    background: #33231c;
+    color: #fffaf4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-eyebrow {
+    color: #b9895b;
+    font: 700 0.75rem/1.2 Montserrat, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.login-copy h1,
+.dashboard-heading h1 {
+    margin: 1rem 0 0.75rem;
+    font: 400 clamp(2.2rem, 5vw, 3.5rem)/1.05 'Libre Caslon Text', serif;
+}
+
+.login-copy p,
+.dashboard-heading p {
+    margin: 0;
+    font: 1rem/1.7 Montserrat, sans-serif;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-field label {
+    font: 700 0.78rem/1.2 Montserrat, sans-serif;
+    text-transform: uppercase;
+}
+
+.form-field input {
+    width: 100%;
+    border: 1px solid #d9c8b9;
+    border-radius: 0;
+    padding: 0.85rem 0.9rem;
+    background: #fff;
+    color: #2e211b;
+    font: 1rem Montserrat, sans-serif;
+}
+
+.form-field input:focus {
+    outline: 2px solid #b9895b;
+    outline-offset: 2px;
+}
+
+.login-form button,
+.dashboard-link {
+    border: 0;
+    border-radius: 0;
+    padding: 0.95rem 1.25rem;
+    background: #8c5634;
+    color: #fffaf4;
+    text-align: center;
+    font: 700 0.8rem Montserrat, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-form button:hover,
+.dashboard-link:hover {
+    background: #6f4026;
+    color: #fffaf4;
+}
+
+.login-error {
+    margin: 0;
+    color: #a3322d;
+    font: 0.85rem/1.4 Montserrat, sans-serif;
+}
+
+.dashboard-heading {
+    width: min(100%, 42rem);
+    padding: 3rem;
+    background: #fffaf4;
+    box-shadow: 0 1.5rem 4rem rgba(63, 39, 25, 0.14);
+}
+
+.dashboard-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .login-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .login-copy,
+    .login-form {
+        padding: 2rem;
+    }
+}

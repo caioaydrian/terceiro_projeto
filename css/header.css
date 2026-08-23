@@ -43,9 +43,8 @@ nav a {
 }
 
 .button {
-    width: 150px;
-    border-radius: 16px;
-    background-color: #F0BD8B;
-    font-size: 20px;
-    margin-left: 550px;
+    margin-left: 500px;
+    width: 180px;
+    font-size: 24px;
+    margin-right: 10px;
 }
