@@ -29,27 +29,27 @@ $jsonDados = json_encode($dadosBrutos, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_AP
 <main class="dashboard-page">
     <section class="dashboard-heading">
         <div>
-            <span class="login-eyebrow">Painel administrativo</span>
-            <h1>Olá, administrador.</h1>
-            <p>Resumo das métricas globais da Dark Cafeteria.</p>
+            <span class="login-eyebrow">Admin Panel</span>
+            <h1>Hello, Admin.</h1>
+            <p>Resume of the sales of Dark Cafeteria.</p>
         </div>
         <nav class="dashboard-actions" aria-label="Ações do painel">
-            <a class="dashboard-link dashboard-link-light" href="?paginas=inicio">Ver site</a>
-            <a class="dashboard-link" href="?paginas=logout">Sair</a>
+            <a class="dashboard-link dashboard-link-light" href="?paginas=inicio">Back to site</a>
+            <a class="dashboard-link" href="?paginas=logout">Log Out</a>
         </nav>
     </section>
 
     <section class="dashboard-metrics" aria-label="Métricas de vendas">
         <div class="metric-card">
-            <h3>Faturamento Total</h3>
+            <h3>Total Revenue</h3>
             <p id="metrica-faturamento">Carregando...</p>
         </div>
         <div class="metric-card">
-            <h3>Itens Vendidos</h3>
+            <h3>Sold Itens</h3>
             <p id="metrica-itens">Carregando...</p>
         </div>
         <div class="metric-card">
-            <h3>Ticket Médio</h3>
+            <h3>Medium Ticket</h3>
             <p id="metrica-ticket">Carregando...</p>
         </div>
     </section>

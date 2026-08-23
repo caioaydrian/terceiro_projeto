@@ -8,8 +8,8 @@
     <section class="login-panel" aria-labelledby="login-title">
         <div class="login-copy">
             <span class="login-eyebrow">Dark Cafeteria</span>
-            <h1 id="login-title">Bem-vindo de volta.</h1>
-            <p>Acesse o painel para acompanhar sua cafeteria.</p>
+            <h1 id="login-title">Welcome Back.</h1>
+            <p>Acess the panel to control your cafeteria.</p>
         </div>
 
         <form class="login-form" method="post" action="?paginas=login">
@@ -23,11 +23,11 @@
             </div>
 
             <div class="form-field">
-                <label for="senha">Senha</label>
+                <label for="senha">Password</label>
                 <input type="password" id="senha" name="senha" autocomplete="current-password" required>
             </div>
 
-            <button type="submit">Entrar no painel</button>
+            <button type="submit">Enter Panel</button>
         </form>
     </section>
 </main>
