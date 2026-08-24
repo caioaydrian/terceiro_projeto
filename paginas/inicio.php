@@ -101,7 +101,7 @@
                     <p>8:00 AM - 5:00 PM</p>
                 </div>
             </div>
-            <button type="button" class="btn">Get Directions</button>
+            <a href="?paginas=contato" class="btn">Get Directions</a>
         </div>
     </section>
 </main>

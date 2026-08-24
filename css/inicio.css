@@ -99,7 +99,7 @@
 }
 
 .quatrocomeco {
-    margin-bottom: 10px;
+    margin-bottom: 100px;
 }
 
 .cincocomeco {
@@ -113,6 +113,7 @@
 }
 
 .cincocomeco h5 {
+    font-family: libre caslon text;
     font-size: 44px;
     margin-bottom: 40px;
 }
@@ -145,6 +146,7 @@
 
 .horariocinco .wd h6,
 .horariocinco .we h6 {
+    font-family: libre caslon text;
     margin: 0 0 6px 0;
     font-size: 28px;
     /* font-weight: 600; */
@@ -170,6 +172,13 @@
 }
 
 .btn {
+    padding: 10px;
+    font-size: large;
+    /* font-family: ; */
     background-color: #FFEDEA;
     margin-top: 40px;
+}
+
+.btn:hover {
+    background-color: #C6A39D;
 }

@@ -12,17 +12,17 @@ nav {
 }
 
 .logo {
-    max-height: 90px;
+    max-height: 72px;
     border-radius: 50px;
 }
 
 b {
     margin-right: 500px;
-    font-family: libre caslon text;
+    font-family: style script;
     color: #F0BD8B;
     font-weight: lighter;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 40px;
 }
 
 nav ul {
@@ -43,8 +43,8 @@ nav a {
 }
 
 .button {
-    margin-left: 500px;
-    width: 180px;
+    margin-left: 600px;
+    /* width: 180px; */
     font-size: 24px;
     margin-right: 10px;
 }
