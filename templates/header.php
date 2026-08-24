@@ -37,7 +37,7 @@
                 <li><a href="?paginas=historia">Our Story</a></li>
                 <li><a href="?paginas=contato">Contact</a></li>
 
-                <a href="?paginas=login" class="button">Login</a>
+                <a href="?paginas=login" class="button"><?php echo empty($_SESSION['usuario_autenticado']) ? "Login" : "Admin" ?></a>
             </ul>
         </nav>
     </header>

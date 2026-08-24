@@ -109,7 +109,7 @@ body {
 }
 
 .dashboard-heading {
-    width: min(100%, 42rem);
+    /* width: min(100%, 42rem); */
     padding: 3rem;
     background: #fffaf4;
     box-shadow: 0 1.5rem 4rem rgba(63, 39, 25, 0.14);
