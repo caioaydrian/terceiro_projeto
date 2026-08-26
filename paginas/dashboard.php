@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -9,21 +7,6 @@ if (empty($_SESSION['usuario_autenticado'])) {
     header('Location: ../index.php?paginas=login');
     exit;
 }
-
-try {
-    if (!$pdo) {
-        throw new RuntimeException('Conexão com o banco indisponível.');
-    }
-
-    $stmt = $pdo->query("SELECT id_sale, quantity, unit_price FROM vw_sales_complete");
-    $dadosBrutos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    $dadosBrutos = [];
-} catch (RuntimeException $e) {
-    $dadosBrutos = [];
-}
-
-$jsonDados = json_encode($dadosBrutos, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 ?>
 
 <main class="dashboard-page">
@@ -42,58 +25,17 @@ $jsonDados = json_encode($dadosBrutos, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_AP
     <section class="dashboard-metrics" aria-label="Métricas de vendas">
         <div class="metric-card">
             <h3>Total Revenue</h3>
-            <p id="metrica-faturamento">Carregando...</p>
+            <p id="metrica-faturamento">Loading...</p>
         </div>
         <div class="metric-card">
             <h3>Sold Itens</h3>
-            <p id="metrica-itens">Carregando...</p>
+            <p id="metrica-itens">Loading...</p>
         </div>
         <div class="metric-card">
             <h3>Medium Ticket</h3>
-            <p id="metrica-ticket">Carregando...</p>
+            <p id="metrica-ticket">Loading...</p>
         </div>
     </section>
 </main>
 
-<script>
-    const rawSalesData = <?= $jsonDados ?>;
-
-    const metricasGlobais = rawSalesData.reduce((acumulador, itemAtual) => {
-
-        const quantidade = parseFloat(itemAtual.quantity);
-        const valorUnitario = parseFloat(itemAtual.unit_price);
-        const idVenda = itemAtual.id_sale;
-
-        acumulador.faturamentoTotal += (quantidade * valorUnitario);
-
-        acumulador.itensVendidos += quantidade;
-
-        if (!acumulador.vendasUnicas.includes(idVenda)) {
-            acumulador.vendasUnicas.push(idVenda);
-        }
-
-        return acumulador;
-    }, {
-        faturamentoTotal: 0,
-        itensVendidos: 0,
-        vendasUnicas: []
-    });
-
-    const totalPedidos = metricasGlobais.vendasUnicas.length;
-    const ticketMedio = totalPedidos > 0 ?
-        (metricasGlobais.faturamentoTotal / totalPedidos) :
-        0;
-
-    const formatarMoeda = (valor) => {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(valor);
-    };
-
-    document.getElementById('metrica-faturamento').innerText = formatarMoeda(metricasGlobais.faturamentoTotal);
-    document.getElementById('metrica-itens').innerText = metricasGlobais.itensVendidos + " unid.";
-    document.getElementById('metrica-ticket').innerText = formatarMoeda(ticketMedio);
-
-    console.log("Métricas processadas via reduce():", metricasGlobais);
-</script>
+<script src="dist/dashboard.js"></script>
