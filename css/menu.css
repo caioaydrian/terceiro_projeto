@@ -23,6 +23,7 @@
     background: transparent;
     color: #2c1600;
     cursor: pointer;
+    text-decoration: none;
     padding: 10px 22px;
     font: inherit;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -34,7 +35,7 @@
     color: #ffffff;
 }
 
-.category-listfetchDrinks {
+.category-list {
     min-height: 250px;
 }
 
