@@ -36,7 +36,7 @@ $categorias_exibidas = $categoria_selecionada === "All"
 <main>
     <section class="menu">
         <h1>Our Menu</h1>
-        <div class="menu-options" role="tablist" aria-label="Categorias do menu">
+        <div class="menu-options" role="tablist" aria-label="Menu categories">
             <?php if (!empty($categorias)): ?>
                 <a class="menu-option<?= $categoria_selecionada === "All" ? " active" : "" ?>"
                     href="?paginas=menu&category=All"
