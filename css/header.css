@@ -6,9 +6,15 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    position: relative;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo {
@@ -17,7 +23,6 @@ nav {
 }
 
 b {
-    margin-right: 500px;
     font-family: style script;
     color: #F0BD8B;
     font-weight: lighter;
@@ -34,17 +39,21 @@ nav ul {
     padding: 0;
 }
 
+.pages {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 nav a {
     color: white;
     text-decoration: none;
     font-weight: lighter;
-    font-size: 20px;
+    font-size: 22px;
     font-family: libre caslon text;
 }
 
 .button {
-    /* margin-left: 600px; */
-    /* width: 180px; */
-    font-size: 24px;
-    margin-right: 10px;
+    /* font-size: 40px; */
+    margin-left: auto;
 }

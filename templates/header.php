@@ -29,15 +29,18 @@
 <body>
     <header>
         <nav>
-            <img src="imagens/coffeeCup.ico" alt="logo cafeteria" class="logo">
-            <b>Dark Cafeteria</b>
-            <ul>
+            <div class="brand">
+                <img src="imagens/coffeeCup.ico" alt="logo cafeteria" class="logo">
+                <b>Dark Cafeteria</b>
+            </div>
+            <ul class="pages">
                 <li><a href="?paginas=inicio">Home</a></li>
                 <li><a href="?paginas=menu">Menu</a></li>
                 <li><a href="?paginas=historia">Our Story</a></li>
                 <li><a href="?paginas=contato">Contact</a></li>
-
-                <a href="?paginas=login" class="button"><?php echo empty($_SESSION['usuario_autenticado']) ? "Login" : "Admin" ?></a>
+            </ul>
+            <ul class="button">
+                <li><a href="?paginas=login"><?php echo empty($_SESSION['usuario_autenticado']) ? "Login" : "Admin" ?></a></li>
             </ul>
         </nav>
     </header>
