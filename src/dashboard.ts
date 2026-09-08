@@ -175,7 +175,7 @@ async function fetchDashboard(): Promise<void> {
             atualizarMetrica(metricaFaturamento, 'R$ 0,00');
             atualizarMetrica(metricaItens, '0 unid.');
             atualizarMetrica(metricaTicket, 'R$ 0,00');
-            atualizarMetrica(metricaProduto, 'Nenhum dado registrado');
+            atualizarMetrica(metricaProduto, 'No data available');
             atualizarMetrica(metricaCategoria, 'No data available');
             return;
         }
@@ -198,11 +198,11 @@ async function fetchDashboard(): Promise<void> {
         atualizarMetrica(metricaTicket, formatarMoeda(ticketMedio));
         atualizarMetrica(
             metricaProduto,
-            produtoMaisVendido ? `${produtoMaisVendido.nome} (${produtoMaisVendido.quantidade} unid.)` : 'Nenhum dado registrado'
+            produtoMaisVendido ? `${produtoMaisVendido.nome} (${produtoMaisVendido.quantidade} unid.)` : 'No data available'
         );
         atualizarMetrica(
             metricaCategoria,
-            categoriaMaisVendida ? `${categoriaMaisVendida.nome} (${formatarMoeda(categoriaMaisVendida.faturamento)})` : 'Nenhum dado registrado'
+            categoriaMaisVendida ? `${categoriaMaisVendida.nome} (${formatarMoeda(categoriaMaisVendida.faturamento)})` : 'No data available'
         );
         atualizarStatus('Metrics updated successfully.');
 
