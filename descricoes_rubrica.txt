@@ -1,0 +1,56 @@
+BANCO DE DADOS AVANÇADO
+
+Criação de CTEs e Views analíticas no MariaDB que limpem e consolidem os dados brutos do sistema, entregando-os perfeitamente estruturados.
+
+Desenvolvimento de Stored Procedures otimizadas para centralizar a busca, filtros e paginação dos indicadores da dashboard, permitindo que a API em PHP faça chamadas limpas (CALL) e assíncronas.
+
+Implementação de Triggers (BEFORE UPDATE) para padronizar a inserção de valores positivos.
+
+Criação de uma função no banco de dados para reutulização de scripts massivos ou complexos.
+
+Criação de View que centralize informações impotantes no sistema e que estão em diversas tabelas distintas.
+
+
+DESENVOLVIMENTO WEB AVANÇADA
+
+Aparência do Sistema: o sistema possui interface amigável, possuindo usabilidade para facilitar para que o usuário não tenha de ficar procurando as tarefas?
+
+Usou o Framework Bootstrap no Desenvolvimento do Layout, pelo menos 3 componentes?
+
+Fez um template para facilitar a manuteção e diminuir o número de arquivos?
+
+A estrutura do projeto está bem definida? Com os arquivos separados para melhorar a manutenção?
+
+3 CRUDS: o aluno finalizou os 3 CRUDs completos? Com a Inclusão, exclusão, edição e exclusão?
+
+As regras de exclusão foram feitas, dando ao usuário uma mensagem clara do que ocorreu?
+
+
+LÓGICA AVANÇADA
+
+Modelagem de Dados e Contratos de Interface (TypeScript): Avalia se o projeto consolida a tipagem estrita para os dados vindos do backend. O nível excelente é alcançado quando o código apresenta interfaces ou types robustos que mapeiam com precisão 100% do JSON enviado pelo PHP, sem qualquer uso do tipo any e com os retornos de todas as funções explicitamente tipados.
+
+Agregações e Cálculos Financeiros (Uso de Reduce): Avalia a consolidação de acumuladores para gerar as métricas globais da dashboard. O nível excelente é alcançado quando o projeto utiliza o método .reduce() de forma impecável para extrair os grandes números (como faturamento total calculando quantidade multiplicada pelo valor unitário) diretamente do array bruto enviado pelo PHP.
+
+Segmentação e Filtros de Negócio (Uso de Filter): Avalia a capacidade de isolar subconjuntos de dados para criar inteligência de negócio. O nível excelente exige a aplicação precisa do método .filter() para criar visões específicas na dashboard, como separar vendas por categorias, filtrar produtos com estoque crítico ou segmentar indicadores por período.
+
+Algoritmos de Ranking e Frequência (Destaques): Avalia a lógica matemática para descobrir valores máximos ou recorrências na base de dados. O nível excelente é atingido quando o código apresenta uma lógica sólida (usando estruturas de chave-valor ou objetos de contagem) para identificar com precisão o produto mais vendido ou o maior indicador de destaque de forma dinâmica.
+
+Transformação e Formatação de Estruturas (Uso de Map): Avalia a habilidade de transformar e preparar arrays de dados para o front-end. O nível excelente é caracterizado pela utilização correta do método .map() para transformar a estrutura original da API para o formato exigido pela interface, como strings formatadas em formato de moeda local (R$) ou arrays limpos para gráficos.
+
+Tratamento de Cenários de Exceção (Edge Cases): Avalia se a lógica do projeto está protegida contra variações ou ausência de dados no banco. O nível excelente é atribuído quando a lógica demonstra maturidade ao tratar cenários vazios (exibindo mensagens elegantes como "Nenhum dado registrado" se o banco do PHP estiver limpo), impedindo que as funções de cálculo quebrem ou gerem erros de NaN na tela.
+
+
+TECH FORGE
+
+Consumo de API e Resolução de Fluxo Assíncrono: Avalia a entrega do consumo da API em PHP usando as ferramentas modernas de assincronismo. O nível excelente exige que o projeto realize o consumo via fetch utilizando async/await e trate exceções de rede ou falhas de banco com blocos try/catch, evitando que a aplicação quebre durante a apresentação.
+
+Integração de Ambientes (XAMPP + Compilação): Avalia a autonomia dos alunos ao rodar e demonstrar a aplicação funcionando no ecossistema local. O nível excelente é atingido quando o projeto demonstra total domínio do ecossistema ao vivo, rodando o backend perfeitamente no Apache (XAMPP) e executando o fluxo de compilação do TypeScript (.ts para .js) sem falhas ou dependência do professor.
+
+Manipulação Segura do DOM no Front-End: Avalia como o TypeScript interage com o HTML da dashboard entregue. O nível excelente é caracterizado quando a renderização dos dados trata nativamente a possibilidade de elementos nulos através de validações lógicas (como condicionais if), respeitando as regras estritas do compilador sem o uso indiscriminado do operador de asserção !.
+
+Organização do Código e Modularidade: Avalia a legibilidade, o clean code e a estrutura das funções do projeto. O nível excelente é atribuído quando o código é limpo, legível, bem estruturado e as funções possuem responsabilidade única (uma função exclusiva para busca e outra para processamento/renderização), seguindo as boas práticas de nomenclatura.
+
+Comunicação Técnico-Visual da Dashboard: Avalia a qualidade técnica na construção da interface e na disposição dos indicadores. O nível excelente é alcançado quando o front-end apresenta um layout de dashboard coerente, limpo e bem estruturado no HTML/CSS, facilitando a leitura imediata dos dados processados sem poluição visual.
+
+Comunicação Técnica e Domínio Conceitual (Apresentação): Avalia a clareza e a propriedade técnica dos alunos ao defenderem o projeto final. O nível excelente é atingido quando o grupo explica com perfeita propriedade o fluxo completo do dado (Banco para PHP, JSON, TypeScript e DOM), utilizando a terminologia correta e respondendo aos questionamentos da banca com segurança.

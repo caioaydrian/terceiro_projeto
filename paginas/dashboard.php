@@ -22,6 +22,8 @@ if (empty($_SESSION['usuario_autenticado'])) {
         </nav>
     </section>
 
+    <p id="dashboard-status" class="dashboard-status" aria-live="polite">Loading Metrics...</p>
+
     <section class="dashboard-metrics" aria-label="Métricas de vendas">
         <div class="metric-card">
             <h3>Total Revenue</h3>
@@ -34,6 +36,17 @@ if (empty($_SESSION['usuario_autenticado'])) {
         <div class="metric-card">
             <h3>Medium Ticket</h3>
             <p id="metrica-ticket">Loading...</p>
+        </div>
+    </section>
+
+    <section class="dashboard-metrics dashboard-insights" aria-label="Indicadores de destaque">
+        <div class="metric-card">
+            <h3>Best Seller</h3>
+            <p id="metrica-produto">Loading...</p>
+        </div>
+        <div class="metric-card">
+            <h3>Top Category</h3>
+            <p id="metrica-categoria">Loading...</p>
         </div>
     </section>
 </main>

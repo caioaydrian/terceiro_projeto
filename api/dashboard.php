@@ -1,16 +1,23 @@
 <?php
+header('Content-Type: application/json; charset=UTF-8');
 require_once "../config/database.php";
 
-if (!empty($pdo)) {
+if (empty($pdo)) {
+    http_response_code(503);
+    echo json_encode(['error' => 'Database unavailable.']);
+    exit;
+}
 
-    try {
-        $stmt = $pdo->query("SELECT id_sale, quantity, unit_price FROM vw_sales_complete");
-        $dadosDashboard = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        $dadosDashboard = [];
-    } catch (RuntimeException $e) {
-        $dadosDashboard = [];
-    }
-
-    echo json_encode($dadosDashboard); //JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+try {
+    $stmt = $pdo->query("CALL sp_dashboard_metrics(100, NULL, NULL, NULL)");
+    $dadosDashboard = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode(['data' => $dadosDashboard]);
+} catch (PDOException $e) {
+    http_response_code(500);
+    error_log('Dashboard query error: ' . $e->getMessage());
+    echo json_encode(['error' => "Couldn't load the dashboard."]);
+} catch (RuntimeException $e) {
+    http_response_code(500);
+    error_log('Dashboard runtime error: ' . $e->getMessage());
+    echo json_encode(['error' => "Couldn't load the dashboard."]);
 }
