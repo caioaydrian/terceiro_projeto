@@ -53,11 +53,11 @@
                 </div>
             </div>
             <div class="card">
-                <img src="imagens/croissant.jpeg" class="card-img-top" alt="croissant">
+                <img src="imagens/iced-matcha.jpeg" class="card-img-top" alt="iced matcha">
                 <div class="card-body">
-                    <h5 class="card-title">Almond Croissant</h5>
-                    <p class="card-text">Twice-baked butter croissant filled with rich frangipane, topped with toasted, crispy topping.</p>
-                    <p class="card-text"><small class="text-body-secondary">Vegetarian</small></p>
+                    <h5 class="card-title">Iced Matcha</h5>
+                    <p class="card-text">A refreshing blend of ceremonial-grade matcha powder, steamed milk, and a touch of sweetness.</p>
+                    <p class="card-text"><small class="text-body-secondary">Matcha</small></p>
                 </div>
             </div>
         </div>
