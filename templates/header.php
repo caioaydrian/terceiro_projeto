@@ -40,7 +40,11 @@
                 <li><a href="?paginas=contato">Contact</a></li>
             </ul>
             <ul class="button">
-                <li><a href="?paginas=login"><?php echo empty($_SESSION['usuario_autenticado']) ? "Login" : "Admin" ?></a></li>
+                <li>
+                    <a href="<?= empty($_SESSION['usuario_autenticado']) ? '?paginas=login' : '?paginas=dashboard' ?>">
+                        <?= empty($_SESSION['usuario_autenticado']) ? 'Login' : 'Admin' ?>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>

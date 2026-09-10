@@ -4,7 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 
 if (empty($_SESSION['usuario_autenticado'])) {
-    header('Location: ../index.php?paginas=login');
+    header('Location: ?paginas=login');
     exit;
 }
 ?>
@@ -17,7 +17,10 @@ if (empty($_SESSION['usuario_autenticado'])) {
             <p>Resume of the sales of Dark Cafeteria.</p>
         </div>
         <nav class="dashboard-actions" aria-label="Ações do painel">
-            <a class="dashboard-link dashboard-link-light" href="?paginas=inicio">Back to site</a>
+            <a class="dashboard-link dashboard-link-primary" href="?paginas=dashboard">Dashboard</a>
+            <a class="dashboard-link dashboard-link-light" href="?paginas=produtos">Products</a>
+            <a class="dashboard-link dashboard-link-light" href="?paginas=clientes">Clients</a>
+            <a class="dashboard-link dashboard-link-light" href="?paginas=comandas">Orders</a>
             <a class="dashboard-link" href="?paginas=logout">Log Out</a>
         </nav>
     </section>

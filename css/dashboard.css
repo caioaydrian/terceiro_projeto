@@ -4,7 +4,7 @@ body {
 }
 
 .dashboard-page {
-    /* width: min(100% - 2.5rem, 72rem); */
+    width: min(100% - 2.5rem, 72rem);
     margin: 0 auto;
     padding: 4rem 0 5rem;
 }
@@ -19,9 +19,22 @@ body {
 }
 
 .dashboard-heading h1 {
+    display: block;
+    min-height: 3.5rem;
     margin: 0.8rem 0 0.6rem;
     color: #33231c;
-    font: 400 clamp(2rem, 5vw, 3.4rem)/1.05 'Libre Caslon Text', serif;
+    font-family: 'Libre Caslon Text', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.dashboard-heading .login-eyebrow {
+    color: #b9895b;
+    font: 700 0.75rem/1.2 Montserrat, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .dashboard-heading p {
@@ -34,33 +47,51 @@ body {
     display: flex;
     flex-shrink: 0;
     gap: 0.7rem;
+    flex-wrap: wrap;
 }
 
 .dashboard-link {
-    display: inline-block;
-    padding: 0.75rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    background: #f8f1eb;
+    border: 1px solid #d9c8b9;
     background: #8c5634;
     color: #fffaf4;
     font: 700 0.72rem Montserrat, sans-serif;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: none;
 }
 
 .dashboard-link:hover {
     background: #6f4026;
-    color: #fffaf4;
 }
 
 .dashboard-link-light {
-    border: 1px solid #b9895b;
-    background: transparent;
-    color: #6f4026;
+    background: #f8f1eb;
+    border: 1px solid #d9c8b9;
+    color: #2e211b;
 }
 
 .dashboard-link-light:hover {
     background: #eadbcd;
-    color: #6f4026;
+    color: #2e211b;
+}
+
+.dashboard-link-primary {
+    background: #f2e3d5;
+    border-color: #d9c8b9;
+    color: #2e211b;
+}
+
+.dashboard-link-primary:hover {
+    background: #eadbcd;
+    color: #2e211b;
 }
 
 .dashboard-metrics {
@@ -93,11 +124,14 @@ body {
 }
 
 .dashboard-status {
+    display: block;
+    min-height: 1.4rem;
     margin: 1.2rem 0 0;
     color: #6f5a4b;
     font: 600 0.72rem/1.4 Montserrat, sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .dashboard-status.error {

@@ -3,8 +3,9 @@
 session_start();
 
 $pagina = isset($_GET["paginas"]) ? $_GET["paginas"] : "inicio";
+$adminPages = ["dashboard", "produtos", "clientes", "comandas"];
 
-if ($pagina === 'dashboard' && empty($_SESSION['usuario_autenticado'])) {
+if (in_array($pagina, $adminPages, true) && empty($_SESSION['usuario_autenticado'])) {
     header('Location: ?paginas=login');
     exit;
 }
@@ -30,10 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pagina === 'login') {
     $erro_login = 'E-mail ou senha inválidos.';
 }
 
-
-$css_especifico = $pagina . ".css";
-
-// require_once "config/database.php";
+$css_especifico = in_array($pagina, ["produtos", "clientes", "comandas"], true)
+    ? "admin.css"
+    : $pagina . ".css";
 
 include "templates/header.php";
 
@@ -43,7 +43,10 @@ $rotas = [
     "historia" => "paginas/historia.php",
     "contato" => "paginas/contato.php",
     "login" => "paginas/login.php",
-    "dashboard" => "paginas/dashboard.php"
+    "dashboard" => "paginas/dashboard.php",
+    "produtos" => "paginas/produtos.php",
+    "clientes" => "paginas/clientes.php",
+    "comandas" => "paginas/comandas.php"
 ];
 
 if (array_key_exists($pagina, $rotas)) {
