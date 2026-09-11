@@ -102,6 +102,10 @@
     margin-bottom: 100px;
 }
 
+.quatrocomeco img {
+    border-radius: 8px;
+}
+
 .cincocomeco {
     background-color: #422A26;
     padding: 20px;
