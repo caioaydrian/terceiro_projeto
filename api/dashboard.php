@@ -8,10 +8,42 @@ if (empty($pdo)) {
     exit;
 }
 
+$categoria = trim((string)($_GET['categoria'] ?? ''));
+$dataInicio = trim((string)($_GET['inicio'] ?? ''));
+$dataFim = trim((string)($_GET['fim'] ?? ''));
+
 try {
-    $stmt = $pdo->query("CALL sp_dashboard_metrics(100, NULL, NULL, NULL)");
+    $stmt = $pdo->prepare("CALL sp_dashboard_metrics(100, :categoria, :inicio, :fim)");
+
+    if ($categoria === '') {
+        $stmt->bindValue(':categoria', null, PDO::PARAM_NULL);
+    } else {
+        $stmt->bindValue(':categoria', $categoria, PDO::PARAM_STR);
+    }
+
+    if ($dataInicio === '') {
+        $stmt->bindValue(':inicio', null, PDO::PARAM_NULL);
+    } else {
+        $stmt->bindValue(':inicio', $dataInicio, PDO::PARAM_STR);
+    }
+
+    if ($dataFim === '') {
+        $stmt->bindValue(':fim', null, PDO::PARAM_NULL);
+    } else {
+        $stmt->bindValue(':fim', $dataFim, PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
     $dadosDashboard = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode(['data' => $dadosDashboard]);
+
+    echo json_encode([
+        'data' => $dadosDashboard,
+        'filters' => [
+            'categoria' => $categoria,
+            'inicio' => $dataInicio,
+            'fim' => $dataFim
+        ]
+    ]);
 } catch (PDOException $e) {
     http_response_code(500);
     error_log('Dashboard query error: ' . $e->getMessage());

@@ -25,6 +25,30 @@ if (empty($_SESSION['usuario_autenticado'])) {
         </nav>
     </section>
 
+    <section class="dashboard-filters" aria-label="Filtros da dashboard">
+        <div class="filter-group">
+            <label for="filtro-categoria">Category</label>
+            <select id="filtro-categoria" aria-label="Filtrar por categoria">
+                <option value="">All Categories</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="filtro-data-inicio">Start Date</label>
+            <input id="filtro-data-inicio" type="date" aria-label="Data inicial do filtro">
+        </div>
+
+        <div class="filter-group">
+            <label for="filtro-data-fim">End Date</label>
+            <input id="filtro-data-fim" type="date" aria-label="Data final do filtro">
+        </div>
+
+        <div class="filter-actions">
+            <button type="button" id="aplicar-filtros" class="filter-button-primary">Apply</button>
+            <button type="button" id="limpar-filtros" class="filter-button-secondary">Clear</button>
+        </div>
+    </section>
+
     <p id="dashboard-status" class="dashboard-status" aria-live="polite">Loading Metrics...</p>
 
     <section class="dashboard-metrics" aria-label="Métricas de vendas">

@@ -123,6 +123,93 @@ body {
     font: 400 clamp(1.6rem, 4vw, 2.3rem)/1.1 'Libre Caslon Text', serif;
 }
 
+.dashboard-filters {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: end;
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border: 1px solid #e6d5c6;
+    border-top: 3px solid #b9895b;
+    background: #fffaf4;
+    box-shadow: 0 0.7rem 1.4rem rgba(63, 39, 25, 0.05);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.filter-group label {
+    color: #6f5a4b;
+    font: 700 0.72rem/1.2 Montserrat, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.82rem 0.9rem;
+    border: 1px solid #d9c8b9;
+    background: #fff;
+    color: #2e211b;
+    font: 1rem Montserrat, sans-serif;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: 2px solid #b9895b;
+    outline-offset: 2px;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    min-height: 48px;
+}
+
+.filter-button-primary,
+.filter-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font: 700 0.72rem Montserrat, sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.filter-button-primary {
+    background: #8c5634;
+    color: #fffaf4;
+    padding: 0.9rem 1.2rem;
+    min-height: 46px;
+}
+
+.filter-button-primary:hover {
+    background: #6f4026;
+}
+
+.filter-button-secondary {
+    background: transparent;
+    border: 1px solid #b9895b;
+    color: #6f4026;
+    padding: 0.9rem 1.2rem;
+    min-height: 46px;
+}
+
+.filter-button-secondary:hover {
+    background: #eadbcd;
+}
+
 .dashboard-status {
     display: block;
     min-height: 1.4rem;
@@ -161,6 +248,21 @@ body {
 
     .dashboard-link {
         text-align: center;
+    }
+
+    .dashboard-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .filter-button-primary,
+    .filter-button-secondary {
+        width: 100%;
     }
 
     .dashboard-metrics {

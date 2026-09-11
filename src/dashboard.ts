@@ -12,6 +12,17 @@ type DashboardSaleItem = {
 type DashboardApiPayload = DashboardSaleItem[] | {
     data?: DashboardSaleItem[];
     error?: string;
+    filters?: {
+        categoria?: string;
+        inicio?: string;
+        fim?: string;
+    };
+};
+
+type DashboardFilterState = {
+    categoria: string;
+    inicio: string;
+    fim: string;
 };
 
 type MetricasGlobais = {
@@ -42,6 +53,61 @@ const formatarMoeda = (valor: number): string => {
 const converterNumero = (valor: unknown): number => {
     const numero = Number(valor);
     return Number.isFinite(numero) ? numero : 0;
+};
+
+const lerFiltrosAtuais = (): DashboardFilterState => {
+    const categoria = (document.getElementById('filtro-categoria') as HTMLSelectElement | null)?.value ?? '';
+    const inicio = (document.getElementById('filtro-data-inicio') as HTMLInputElement | null)?.value ?? '';
+    const fim = (document.getElementById('filtro-data-fim') as HTMLInputElement | null)?.value ?? '';
+
+    return { categoria, inicio, fim };
+};
+
+const popularCategoriasDisponiveis = (dados: DashboardSaleItem[]): void => {
+    const select = document.getElementById('filtro-categoria') as HTMLSelectElement | null;
+
+    if (!select) {
+        return;
+    }
+
+    const categoriaAtual = select.value;
+    const categorias = Array.from(
+        new Set(
+            dados
+                .map((item) => item.category?.trim() ?? '')
+                .filter((categoria): categoria is string => categoria.length > 0)
+        )
+    ).sort((a, b) => a.localeCompare(b));
+
+    select.innerHTML = '<option value="">All Categories</option>'
+        + categorias.map((categoria) => `<option value="${categoria}">${categoria}</option>`).join('');
+
+    if (categorias.includes(categoriaAtual)) {
+        select.value = categoriaAtual;
+    } else {
+        select.value = '';
+    }
+};
+
+const aplicarFiltrosDeNegocio = (dados: DashboardSaleItem[], filtros: DashboardFilterState): DashboardSaleItem[] => {
+    return dados.filter((item) => {
+        const categoria = (item.category ?? '').trim();
+        const data = (item.sale_date ?? '').slice(0, 10);
+
+        if (filtros.categoria && categoria !== filtros.categoria) {
+            return false;
+        }
+
+        if (filtros.inicio && data < filtros.inicio) {
+            return false;
+        }
+
+        if (filtros.fim && data > filtros.fim) {
+            return false;
+        }
+
+        return true;
+    });
 };
 
 const normalizarRegistro = (item: DashboardSaleItem): DashboardSaleItem => {
@@ -124,6 +190,44 @@ const construirRankingCategorias = (dados: DashboardSaleItem[]): CategoriaRankin
         .sort((a, b) => b.faturamento - a.faturamento);
 };
 
+const inicializarEventosFiltros = (): void => {
+    const categoria = document.getElementById('filtro-categoria') as HTMLSelectElement | null;
+    const inicio = document.getElementById('filtro-data-inicio') as HTMLInputElement | null;
+    const fim = document.getElementById('filtro-data-fim') as HTMLInputElement | null;
+    const aplicar = document.getElementById('aplicar-filtros');
+    const limpar = document.getElementById('limpar-filtros');
+
+    categoria?.addEventListener('change', () => {
+        void fetchDashboard();
+    });
+
+    [inicio, fim].forEach((input) => {
+        input?.addEventListener('change', () => {
+            void fetchDashboard();
+        });
+    });
+
+    aplicar?.addEventListener('click', () => {
+        void fetchDashboard();
+    });
+
+    limpar?.addEventListener('click', () => {
+        if (categoria) {
+            categoria.value = '';
+        }
+
+        if (inicio) {
+            inicio.value = '';
+        }
+
+        if (fim) {
+            fim.value = '';
+        }
+
+        void fetchDashboard();
+    });
+};
+
 async function fetchDashboard(): Promise<void> {
     const statusElement = document.getElementById('dashboard-status');
     const metricaFaturamento = document.getElementById('metrica-faturamento');
@@ -146,9 +250,27 @@ async function fetchDashboard(): Promise<void> {
     };
 
     try {
+        const filtrosAtuais = lerFiltrosAtuais();
+        const params = new URLSearchParams();
+
+        if (filtrosAtuais.categoria) {
+            params.set('categoria', filtrosAtuais.categoria);
+        }
+
+        if (filtrosAtuais.inicio) {
+            params.set('inicio', filtrosAtuais.inicio);
+        }
+
+        if (filtrosAtuais.fim) {
+            params.set('fim', filtrosAtuais.fim);
+        }
+
+        const queryString = params.toString();
+        const url = queryString ? `api/dashboard.php?${queryString}` : 'api/dashboard.php';
+
         atualizarStatus('Loading Metrics...');
 
-        const response = await fetch('api/dashboard.php', {
+        const response = await fetch(url, {
             headers: {
                 Accept: 'application/json'
             }
@@ -170,17 +292,20 @@ async function fetchDashboard(): Promise<void> {
                 ? payload.data
                 : [];
 
-        if (rawSalesData.length === 0) {
-            atualizarStatus('No data available.', true);
+        popularCategoriasDisponiveis(rawSalesData);
+        const dadosFiltrados = aplicarFiltrosDeNegocio(rawSalesData, filtrosAtuais);
+
+        if (dadosFiltrados.length === 0) {
+            atualizarStatus('Nenhum dado encontrado para os filtros.', true);
             atualizarMetrica(metricaFaturamento, 'R$ 0,00');
             atualizarMetrica(metricaItens, '0 unid.');
             atualizarMetrica(metricaTicket, 'R$ 0,00');
-            atualizarMetrica(metricaProduto, 'No data available');
-            atualizarMetrica(metricaCategoria, 'No data available');
+            atualizarMetrica(metricaProduto, 'Nenhum dado');
+            atualizarMetrica(metricaCategoria, 'Nenhum dado');
             return;
         }
 
-        const dadosNormalizados = rawSalesData
+        const dadosNormalizados = dadosFiltrados
             .filter((item): item is DashboardSaleItem => Boolean(item) && typeof item === 'object')
             .map(normalizarRegistro);
 
@@ -198,11 +323,11 @@ async function fetchDashboard(): Promise<void> {
         atualizarMetrica(metricaTicket, formatarMoeda(ticketMedio));
         atualizarMetrica(
             metricaProduto,
-            produtoMaisVendido ? `${produtoMaisVendido.nome} (${produtoMaisVendido.quantidade} unid.)` : 'No data available'
+            produtoMaisVendido ? `${produtoMaisVendido.nome} (${produtoMaisVendido.quantidade} unid.)` : 'Nenhum dado'
         );
         atualizarMetrica(
             metricaCategoria,
-            categoriaMaisVendida ? `${categoriaMaisVendida.nome} (${formatarMoeda(categoriaMaisVendida.faturamento)})` : 'No data available'
+            categoriaMaisVendida ? `${categoriaMaisVendida.nome} (${formatarMoeda(categoriaMaisVendida.faturamento)})` : 'Nenhum dado'
         );
         atualizarStatus('Metrics updated successfully.');
 
@@ -222,4 +347,5 @@ async function fetchDashboard(): Promise<void> {
     }
 }
 
+inicializarEventosFiltros();
 fetchDashboard();
