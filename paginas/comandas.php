@@ -60,9 +60,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         $id = (int)($_POST['id_sale'] ?? 0);
 
         if ($id > 0) {
-            $stmt = $pdo->prepare('DELETE FROM sale WHERE id_sale = ?');
-            $stmt->execute([$id]);
-            $_SESSION['flash_mensagem'] = 'Order removed successfully.';
+            try {
+                $pdo->beginTransaction();
+
+                $deleteItens = $pdo->prepare('DELETE FROM sale_item WHERE id_sale = ?');
+                $deleteItens->execute([$id]);
+
+                $deleteSale = $pdo->prepare('DELETE FROM sale WHERE id_sale = ?');
+                $deleteSale->execute([$id]);
+
+                $pdo->commit();
+                $_SESSION['flash_mensagem'] = 'Order removed successfully.';
+            } catch (Throwable $e) {
+                $pdo->rollBack();
+                $_SESSION['flash_erro'] = 'It was not possible to delete this order because it is linked to registered items.';
+                error_log('Delete order error: ' . $e->getMessage());
+            }
         }
 
         header('Location: ?paginas=comandas');
